@@ -2,7 +2,12 @@ const { validationResult } = require('express-validator');
 
 const controller = {
     index: (req, res)=>{
-        res.render("index");
+        res.render("index", {
+            name: req.session.name,
+            email: req.session.email,
+            age: req.session.age,
+            color: req.session.color
+        });
     },
     store: (req, res) => {
         const errors = validationResult(req);
@@ -14,7 +19,7 @@ const controller = {
         req.session.name = req.body.name;
         req.session.color = req.body.color;
 
-        res.render('index',)
+        res.redirect('/');
     }
 };
 

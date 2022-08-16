@@ -20,6 +20,6 @@ const validator = [
 const router = express.Router();
 
 router.get('/', mainController.index);
-router.post('/', validator, mainController)
+router.post('/', validator, mainController.store);
 
 module.exports = router;
